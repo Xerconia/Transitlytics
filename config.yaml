@@ -1,0 +1,43 @@
+# Configuration file for project settings
+
+data_processing:
+  missing_value_strategy: "mean"  # Strategy for handling missing values
+  outlier_detection_method: "IQR"  # Method for detecting outliers
+
+feature_engineering:
+  feature_selection:
+    - "household_income"
+    - "household_size"
+    - "age"
+    - "gender"
+    - "employment_status"
+  encoding_method: "one_hot"  # Method for encoding categorical variables
+
+model_training:
+  test_size: 0.2  # Proportion of data to be used for testing
+  random_state: 42  # Seed for reproducibility
+  models:
+    - name: "RandomForestClassifier"
+      params:
+        n_estimators: 100
+        max_depth: 10
+    - name: "LogisticRegression"
+      params:
+        solver: "liblinear"
+        penalty: "l2"
+
+model_evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+  cross_validation_folds: 5  # Number of folds for cross-validation
+
+logging:
+  level: "INFO"  # Logging level
+  file: "logs/trip_prediction.log"  # Log file location
+
+output:
+  model_save_path: "models/"  # Directory to save trained models
+  results_save_path: "results/"  # Directory to save evaluation results
